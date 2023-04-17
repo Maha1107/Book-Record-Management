@@ -4,7 +4,7 @@ const {users} = require("../data/users.json");
 const router = express.Router();
 
 
-
+//Get all users
 router.get("/",(req,res)=>{
     res.status(200).json({
         success:true,
@@ -12,6 +12,7 @@ router.get("/",(req,res)=>{
     });
 });
 
+//get a user by thrir id
 
 router.get("/:id",(req,res)=>{
     const {id} = req.params;
@@ -31,6 +32,8 @@ router.get("/:id",(req,res)=>{
 
     });
 });
+
+//create new user
 
 router.post("/",(req,res)=>{
     const {id,name,surname,email,subscriptionType,subscriptionDate} = req.body;
@@ -58,6 +61,8 @@ router.post("/",(req,res)=>{
     });
 
 });
+
+//update user information
 
 router.put("/:id",(req,res)=>{
     const {id} = req.params;
@@ -90,6 +95,8 @@ router.put("/:id",(req,res)=>{
 
 });
 
+//delete a user
+
 router.delete("/:id",(req,res)=>{
     const {id}= req.params;
     const user= users.find((each)=>each.id==id);
@@ -112,6 +119,7 @@ router.delete("/:id",(req,res)=>{
 
 });
 
+//get user subscription details
 
 router.get("/subscription-details/:id",(req,res)=>{
     const{id}=req.params;
